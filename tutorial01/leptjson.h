@@ -3,11 +3,13 @@
 
 typedef enum { LEPT_NULL, LEPT_FALSE, LEPT_TRUE, LEPT_NUMBER, LEPT_STRING, LEPT_ARRAY, LEPT_OBJECT } lept_type;
 
-typedef struct {
+typedef struct 
+{
     lept_type type;
 }lept_value;
 
-enum {
+enum 
+{
     LEPT_PARSE_OK = 0,
     LEPT_PARSE_EXPECT_VALUE,
     LEPT_PARSE_INVALID_VALUE,
