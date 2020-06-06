@@ -121,6 +121,17 @@ static void test_parse_invalid_value()
 static void test_parse_root_not_singular() 
 {
 	TEST_ERROR(LEPT_PARSE_ROOT_NOT_SINGULAR, "null x");
+
+	/*invalid number*/
+	TEST_ERROR(LEPT_PARSE_ROOT_NOT_SINGULAR, "0123");/*after zero should '.' or nothing*/
+	TEST_ERROR(LEPT_PARSE_ROOT_NOT_SINGULAR, "0x0");
+	TEST_ERROR(LEPT_PARSE_ROOT_NOT_SINGULAR, "0x123");
+}
+
+static void test_parse_number_too_big()
+{
+	TEST_ERROR(LEPT_PARSE_NUMBER_TOO_BIG, "1e309");
+	TEST_ERROR(LEPT_PARSE_NUMBER_TOO_BIG, "-1e309");
 }
 
 static void test_parse() 
@@ -132,6 +143,7 @@ static void test_parse()
     test_parse_expect_value();
     test_parse_invalid_value();
     test_parse_root_not_singular();
+	test_parse_number_too_big();
 }
 
 int main() 
